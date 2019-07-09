@@ -25,10 +25,11 @@ def hierarchical():
         return utils.bad_request(
             "JSON incomplete. {} fields are necessary".format(['method', 'dataDesc']))
 
-    if 'query' in data["dataDesc"]:
-        return utils.bad_request("Query not implemented for hierarchical clustering method")
+    # if 'query' in data["dataDesc"]:
+    #     return utils.bad_request("Query not implemented for hierarchical clustering method")
 
     df = queryDataLake.retrieve_data_as_data_frame(data["dataDesc"])
+    print(df)
     n_clusters = data['options']['n_clusters']
     affinity = data['options']['distanceType']
     linkage = data['options']['linkage']
